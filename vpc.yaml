@@ -1,0 +1,29 @@
+Resources:
+
+#====================
+# VPCの作成
+#====================
+
+  sampleVPC:
+    Type: "AWS::EC2::VPC"
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: 'true'
+      EnableDnsHostnames: 'true'
+      Tags:
+      - Key: Name
+        Value: sampleVPC
+
+#====================
+# subnetの作成
+#====================
+
+  sampleSubnet01a:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: ap-northeast-1a
+      CidrBlock: 10.0.0.0/24
+      Tags:
+      - Key: Name
+        Value: sampleSubnet01a
+      VpcId: !Ref sampleVPC
